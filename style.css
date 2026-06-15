@@ -1,0 +1,188 @@
+html{
+    scroll-behavior:smooth;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+header{
+    background: linear-gradient(135deg, #0066cc, #003366);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+nav{
+    background:#00264d;
+    text-align:center;
+    padding:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+    background:linear-gradient(rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1521791136064-7986c2920216');
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero h2{
+    color:#003366;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    line-height:1.6;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:#ff9800;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#004999;
+}
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:15px;
+    position:fixed;
+    width:100%;
+    bottom:0;
+}
+.services{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.services h2{
+    color:#003366;
+    margin-bottom:30px;
+}
+
+.service-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    width:250px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    position:fixed;
+width:100%;
+bottom:0;
+}
+
+.card h4{
+    color:#0066cc;
+    margin-top:15px;
+    font-size:24px;
+}
+.card{
+    background:white;
+    width:250px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.services{
+    padding:70px 20px;
+}
+
+h2{
+    margin-bottom:20px;
+}
+#searchInput{
+    width:300px;
+    max-width:90%;
+    padding:12px;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+}
+.contact-form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+
+.contact-form textarea{
+    height:120px;
+    resize:none;
+}
+.card a{
+    text-decoration:none;
+}
+
+.card button{
+    margin-top:10px;
+}
+#locationSelect{
+    padding:10px;
+    font-size:16px;
+    border-radius:5px;
+    margin-top:20px;
+}
+
+#results{
+    margin-top:30px;
+}

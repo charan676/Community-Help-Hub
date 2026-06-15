@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Help Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Community Help Hub</h1>
+        <p>Your One-Stop Platform for Public Services & Emergency Assistance</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#emergency">Emergency</a>
+        <a href="#healthcare">Healthcare</a>
+        <a href="#schemes">Schemes</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Helping Communities Stay Connected</h2>
+        <p>
+            Find emergency contacts, healthcare services,
+            government schemes, and educational resources
+            all in one place.
+        </p>
+
+        <input type="text" id="searchInput" placeholder="Search services...">
+
+<br><br>
+<button>Explore Services</button>
+    </section>
+    <section class="services">
+    <h2>About Our Project</h2>
+
+    <div class="card" style="width:80%; max-width:900px; margin:auto;">
+        <p>
+            Community Help Hub is a web-based platform designed to provide
+            quick access to emergency services, healthcare information,
+            government welfare schemes, educational resources, and
+            community support services. The platform aims to improve
+            public awareness and accessibility to essential information.
+        </p>
+    </div>
+</section>
+
+<!-- Emergency Services -->
+<section class="services" id="emergency">
+    <h2>Emergency Services</h2>
+
+    <div class="service-container">
+
+        <div class="card">
+            <h3>🚑 Ambulance Service</h3>
+            <p>24/7 Emergency Medical Assistance across Andhra Pradesh.</p>
+            <h4>108</h4>
+            <a href="tel:108">
+                <button>Call Now</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>👮 Police Emergency</h3>
+            <p>Emergency police assistance and public safety support.</p>
+            <h4>112</h4>
+            <a href="tel:112">
+                <button>Call Now</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🔥 Fire & Rescue</h3>
+            <p>Fire emergencies, rescue operations and disaster response.</p>
+            <h4>101</h4>
+            <a href="tel:101">
+                <button>Call Now</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>👩 Women Helpline</h3>
+            <p>Support and protection services for women.</p>
+            <h4>181</h4>
+            <a href="tel:181">
+                <button>Call Now</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>👶 Child Helpline</h3>
+            <p>Emergency support and protection for children.</p>
+            <h4>1098</h4>
+            <a href="tel:1098">
+                <button>Call Now</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🌊 Disaster Management</h3>
+            <p>Floods, cyclones, earthquakes and natural disaster assistance.</p>
+            <h4>1070</h4>
+            <a href="tel:1070">
+                <button>Call Now</button>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+   <!-- Healthcare Services -->
+<section class="services" id="healthcare">
+    <h2>Healthcare Services</h2>
+
+    <div class="service-container">
+
+      <div class="card">
+    <h3>🏥 Area Hospital,</h3>
+    <p>Andhra Pradesh</p>
+    <p>Government hospital providing healthcare services to local residents.</p>
+
+    <a href="https://maps.google.com/?q=Area+Hospital+Anakapalle" target="_blank">
+        <button>View Location</button>
+    </a>
+</div>
+
+  <div class="card">
+    <h3>🏥 King George Hospital (KGH)</h3>
+
+    <p>Visakhapatnam, Andhra Pradesh</p>
+
+    <p>One of the largest government hospitals in Andhra Pradesh.</p>
+
+    <a href="https://maps.google.com/?q=King+George+Hospital+Visakhapatnam" target="_blank">
+        <button>View Location</button>
+    </a>
+</div>
+   <div class="card">
+    <h3>🩸 Blood Bank Services</h3>
+    <p>Search blood availability and nearby blood banks through e-RaktKosh.</p>
+
+    <a href="https://eraktkosh.mohfw.gov.in/" target="_blank">
+        <button>Find Blood Bank</button>
+    </a>
+</div>
+
+    <div class="card">
+    <h3>💊 Primary Health Centres</h3>
+    <p>Access primary healthcare, maternal care, immunization and vaccination services.</p>
+
+    <a href="https://www.bing.com/ck/a?!&&p=95882a9838911e515a35cec6247c5b1259d0625adfe30c17d69b9c086602760cJmltdHM9MTc4MTIyMjQwMA&ptn=3&ver=2&hsh=4&fclid=19c8bbdb-aea0-63a9-0265-adb0afdf6232&psq=primary+health+care+centres+links+of+andhra+pradesh&u=a1aHR0cHM6Ly9xcHMubmhzcmNpbmRpYS5vcmcvbm9kZS8xODI1" target="_blank">
+        <button>Find PHC</button>
+    </a>
+</div>
+
+    </div>
+</section>
+<section class="services" id="nearby">
+    <h2>Find Nearby Services</h2>
+
+    <select id="locationSelect">
+        <option value="">Select Location</option>
+        <option value="anakapalle">Anakapalle</option>
+        <option value="visakhapatnam">Visakhapatnam</option>
+    </select>
+
+    <div id="results"></div>
+</section>
+<select id="districtSelect">
+    <option value="">Select District</option>
+
+    <option value="alluri">Alluri Sitharama Raju</option>
+    <option value="anakapalle">Anakapalle</option>
+    <option value="anantapur">Anantapur</option>
+    <option value="annamayya">Annamayya</option>
+    <option value="bapatla">Bapatla</option>
+    <option value="chittoor">Chittoor</option>
+    <option value="eastgodavari">East Godavari</option>
+    <option value="eluru">Eluru</option>
+    <option value="guntur">Guntur</option>
+    <option value="kakinada">Kakinada</option>
+    <option value="konaseema">Dr. B.R. Ambedkar Konaseema</option>
+    <option value="krishna">Krishna</option>
+    <option value="kurnool">Kurnool</option>
+    <option value="nandyal">Nandyal</option>
+    <option value="ntr">NTR District</option>
+    <option value="palnadu">Palnadu</option>
+    <option value="parvathipuram">Parvathipuram Manyam</option>
+    <option value="prakasam">Prakasam</option>
+    <option value="srikakulam">Srikakulam</option>
+    <option value="spsrnellore">SPSR Nellore</option>
+    <option value="tirupati">Tirupati</option>
+    <option value="visakhapatnam">Visakhapatnam</option>
+    <option value="vizianagaram">Vizianagaram</option>
+    <option value="westgodavari">West Godavari</option>
+    <option value="ysrkadapa">YSR Kadapa</option>
+</select>
+<!-- Government Schemes -->
+<section class="services" id="schemes">
+   <h2>Andhra Pradesh Government Schemes</h2>
+
+<select id="schemeFilter">
+    <option value="all">All Categories</option>
+    <option value="student">Students</option>
+    <option value="farmer">Farmers</option>
+    <option value="women">Women</option>
+    <option value="senior">Senior Citizens</option>
+</select>
+
+    <div class="service-container">
+
+       <div class="card scheme-card" data-category="student">
+    <h3>🎓 Thalliki vandanam</h3>
+
+    <p><strong>Eligibility:</strong> Students pursuing higher education.</p>
+
+    <p><strong>Benefits:</strong> Reimbursement of tuition fees.</p>
+
+    <a href="https://share.google/bAhd1rywQmDPwpPKF" target="_blank">
+        <button>Official Website</button>
+    </a>
+</div>
+
+       <div class="card scheme-card" data-category="student">
+    <h3>🏥 NTR Vydhyaseva</h3>
+
+    <p><strong>Eligibility:</strong> Eligible low-income families.</p>
+
+    <p><strong>Benefits:</strong> Cashless medical treatment.</p>
+
+    <a href="https://share.google/izbVwYwViaAOrV4ut" target="_blank">
+        <button>Official Website</button>
+    </a>
+</div>
+
+  <div class="card scheme-card" data-category="farmer">
+    <h3>🌾Annadhatha Sukhibava</h3>
+
+    <p><strong>Eligibility:</strong> Farmers and cultivators.</p>
+
+    <p><strong>Benefits:</strong> Financial support for agriculture.</p>
+
+    <a href="https://share.google/rTWlJ37WuULBs4wU8" target="_blank">
+        <button>Official Website</button>
+    </a>
+</div>
+        <div class="card scheme-card" data-category="women">
+    <h3>👩 Aada Bidda Nidhi Scheme</h3>
+
+    <p><strong>Eligibility:</strong> Women beneficiaries aged 45-60 years.</p>
+
+    <p><strong>Benefits:</strong> Financial assistance for livelihood support.</p>
+
+    <a href="https://share.google/72IpoIqUSR2z8qgOd" target="_blank">
+        <button>Official Website</button>
+    </a>
+</div>
+
+        <div class="card scheme-card" data-category="senior">
+    <h3>👵 NTR Bharosa Pension</h3>
+
+    <p><strong>Eligibility:</strong> Senior citizens and eligible beneficiaries.</p>
+
+    <p><strong>Benefits:</strong> Monthly pension support.</p>
+
+    <a href="https://sspensions.ap.gov.in/" target="_blank">
+        <button>Official Website</button>
+    </a>
+    </div>
+</section>
+<!-- Education & Career Resources -->
+<section class="services" id="education">
+    <h2>Education & Career Resources</h2>
+
+    <div class="service-container">
+
+        <div class="card">
+            <h3>💼 AP Skill Development (APSSDC)</h3>
+            <p>Skill training, certifications, job fairs and placement opportunities for Andhra Pradesh youth.</p>
+
+            <a href="http://www.apssdc.in" target="_blank">
+                <button>Visit Portal</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🎓 National Scholarship Portal</h3>
+            <p>Apply for Central and State Government scholarships online.</p>
+
+            <a href="https://scholarships.gov.in" target="_blank">
+                <button>Apply Now</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>📚 SWAYAM</h3>
+            <p>Free online courses from IITs, NITs and leading universities.</p>
+
+            <a href="https://swayam.gov.in" target="_blank">
+                <button>Explore Courses</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🏆 NPTEL</h3>
+            <p>Technical and professional certification courses from IITs.</p>
+
+            <a href="https://nptel.ac.in" target="_blank">
+                <button>Start Learning</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🧑‍💻 Employment News</h3>
+            <p>Government jobs, recruitment notifications and career opportunities.</p>
+
+            <a href="https://share.google/atqHsh9QS03hEMYsf" target="_blank">
+                <button>View Jobs</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🏛️ AP Government Jobs</h3>
+            <p>Latest Andhra Pradesh government recruitment notifications.</p>
+
+            <a href="https://psc.ap.gov.in" target="_blank">
+                <button>View Notifications</button>
+            </a>
+        </div>
+
+    </div>
+</section>
+<!-- Contact Section -->
+<section class="services" id="contact">
+    <h2>Contact & Feedback</h2>
+
+    <div class="contact-form">
+
+        <input type="text" placeholder="Enter Your Name">
+
+        <input type="email" placeholder="Enter Your Email">
+
+        <textarea placeholder="Enter Your Feedback"></textarea>
+
+        <button>Submit Feedback</button>
+
+    </div>
+</section>
+   <footer>
+    <h3>Community Help Hub</h3>
+    <p>Connecting Citizens with Essential Services</p>
+
+    <br>
+
+    <p>Emergency: 112 | Ambulance: 108 | Fire: 101</p>
+
+    <br>
+
+    <p>© 2026 Community Help Hub | Community Service Project</p>
+</footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
