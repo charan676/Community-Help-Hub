@@ -1,8 +1,8 @@
 # 🌐 Community Help Hub (CHH)
 
-🔗 **Live Demo**: [community-help-hub.netlify.app](https://community-help-hub.netlify.app/)
-
 Community Help Hub is a digital public infrastructure platform designed to bridge the gap between citizens and critical public utility services in Andhra Pradesh, India. The application serves as a unified platform for emergency response hotlines, healthcare services, government welfare schemes, educational resources, and interactive community support.
+
+🔗 **Live Demo**: [community-help-hub.netlify.app](https://community-help-hub.netlify.app/)
 
 The project features a **two-tier architecture**:
 1. **Legacy Static Webpage**: A lightweight, fast-loading, single-page static site located in the root folder for offline/low-bandwidth usage.
