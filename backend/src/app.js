@@ -32,6 +32,19 @@ app.use(cors({
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
+// Workaround for Express getter issue with query parameter modifications
+app.use((req, res, next) => {
+  if (req.query) {
+    Object.defineProperty(req, 'query', {
+      value: { ...req.query },
+      writable: true,
+      configurable: true,
+      enumerable: true
+    });
+  }
+  next();
+});
+
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 

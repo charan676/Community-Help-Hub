@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 import store from './store';

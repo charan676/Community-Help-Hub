@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { chatbot } from '../../services/api';
 
 const renderMessageText = (text) => {
@@ -77,9 +77,20 @@ export const ChatbotWidget = () => {
       ? "నమస్కారం! నేను మీ హెల్ప్ హబ్ సహాయకుడిని. నేను మీకు ఎలా సహాయం చేయగలను?"
       : "Hello! I am your Help Hub AI assistant. How can I help you today?";
     
-    setMessages([
-      { id: 'welcome', text: welcomeText, sender: 'bot' }
-    ]);
+    const timer = setTimeout(() => {
+      setMessages((prev) => {
+        if (prev.length > 0 && prev[0].id === 'welcome' && prev[0].text === welcomeText) {
+          return prev;
+        }
+        const welcomeMsg = { id: 'welcome', text: welcomeText, sender: 'bot' };
+        if (prev.length > 0 && prev[0].id === 'welcome') {
+          return [welcomeMsg, ...prev.slice(1)];
+        }
+        return [welcomeMsg, ...prev];
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [language]);
 
   const scrollToBottom = () => {
@@ -118,7 +129,7 @@ export const ChatbotWidget = () => {
           sender: 'bot'
         }
       ]);
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {

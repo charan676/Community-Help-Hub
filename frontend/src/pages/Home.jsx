@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Spinner from '../components/common/Spinner';
 import { emergency, hospitals, schemes } from '../services/api';
@@ -35,7 +34,6 @@ const DISTRICTS = [
 
 export const Home = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const lang = localStorage.getItem('language') || 'en';
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -47,12 +45,7 @@ export const Home = () => {
   const [hospitalList, setHospitalList] = useState([]);
   const [schemeList, setSchemeList] = useState([]);
 
-  useEffect(() => {
-    localStorage.setItem('selectedDistrict', selectedDistrict);
-    fetchData();
-  }, [selectedDistrict]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [emergRes, hospRes, schemeRes] = await Promise.all([
@@ -69,7 +62,15 @@ export const Home = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDistrict]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedDistrict', selectedDistrict);
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchData, selectedDistrict]);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value.toLowerCase());

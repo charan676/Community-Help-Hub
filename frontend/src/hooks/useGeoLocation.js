@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export const useGeoLocation = () => {
   const [location, setLocation] = useState({
@@ -7,29 +7,29 @@ export const useGeoLocation = () => {
     error: null
   });
 
-  const onSuccess = (position) => {
-    setLocation({
-      loaded: true,
-      coordinates: {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      },
-      error: null
-    });
-  };
+  const requestLocation = useCallback(() => {
+    const onSuccess = (position) => {
+      setLocation({
+        loaded: true,
+        coordinates: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        },
+        error: null
+      });
+    };
 
-  const onError = (error) => {
-    setLocation({
-      loaded: true,
-      coordinates: { lat: "", lng: "" },
-      error: {
-        code: error.code,
-        message: error.message
-      }
-    });
-  };
+    const onError = (error) => {
+      setLocation({
+        loaded: true,
+        coordinates: { lat: "", lng: "" },
+        error: {
+          code: error.code,
+          message: error.message
+        }
+      });
+    };
 
-  const requestLocation = () => {
     if (!navigator.geolocation) {
       setLocation((state) => ({
         ...state,
@@ -47,11 +47,14 @@ export const useGeoLocation = () => {
       timeout: 5000,
       maximumAge: 0
     });
-  };
+  }, []);
 
   useEffect(() => {
-    requestLocation();
-  }, []);
+    const timer = setTimeout(() => {
+      requestLocation();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [requestLocation]);
 
   return { ...location, refetch: requestLocation };
 };

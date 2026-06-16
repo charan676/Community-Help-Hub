@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Spinner from '../components/common/Spinner';
@@ -12,11 +12,7 @@ export const Emergency = () => {
   const [contacts, setContacts] = useState([]);
   
 
-  useEffect(() => {
-    fetchEmergencies();
-  }, []);
-
-  const fetchEmergencies = async () => {
+  const fetchEmergencies = useCallback(async () => {
     setLoading(true);
     try {
       const res = await emergency.getAll();
@@ -26,7 +22,14 @@ export const Emergency = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchEmergencies();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchEmergencies]);
 
 
   return (

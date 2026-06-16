@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import DefaultLayout from '../layouts/DefaultLayout';
 import LeafletMap from '../components/maps/LeafletMap';
@@ -27,17 +27,11 @@ export const Healthcare = () => {
   const [searchWord, setSearchWord] = useState('');
   
   // Nearby lookup state
-  const { coordinates, loaded: geoLoaded, error: geoError, refetch: getGps } = useGeoLocation();
+  const { coordinates, error: geoError, refetch: getGps } = useGeoLocation();
   const [nearbyActive, setNearbyActive] = useState(false);
   const [searchRadius, setSearchRadius] = useState(25); // km
 
-  useEffect(() => {
-    if (!nearbyActive) {
-      fetchHospitals();
-    }
-  }, [district, category, searchWord, nearbyActive]);
-
-  const fetchHospitals = async () => {
+  const fetchHospitals = useCallback(async () => {
     setLoading(true);
     try {
       const res = await hospitals.getAll({
@@ -51,7 +45,16 @@ export const Healthcare = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [district, category, searchWord]);
+
+  useEffect(() => {
+    if (!nearbyActive) {
+      const timer = setTimeout(() => {
+        fetchHospitals();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [fetchHospitals, nearbyActive]);
 
   const handleNearbySearch = async () => {
     getGps(); // Request location refresh

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Spinner from '../components/common/Spinner';
@@ -12,11 +12,7 @@ export const Education = () => {
   const [resources, setResources] = useState([]);
   const [category, setCategory] = useState('');
 
-  useEffect(() => {
-    fetchEducationResources();
-  }, [category]);
-
-  const fetchEducationResources = async () => {
+  const fetchEducationResources = useCallback(async () => {
     setLoading(true);
     try {
       const res = await education.getAll(category);
@@ -26,7 +22,14 @@ export const Education = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchEducationResources();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchEducationResources]);
 
   return (
     <DefaultLayout>

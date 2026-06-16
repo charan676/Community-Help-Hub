@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Spinner from '../components/common/Spinner';
@@ -19,13 +19,7 @@ export const Schemes = () => {
   const [wizardGender, setWizardGender] = useState('general');
   const [filteredActive, setFilteredActive] = useState(false);
 
-  useEffect(() => {
-    if (!filteredActive) {
-      fetchSchemes();
-    }
-  }, [selectedCategory, filteredActive]);
-
-  const fetchSchemes = async () => {
+  const fetchSchemes = useCallback(async () => {
     setLoading(true);
     try {
       const res = await schemes.getAll({ category: selectedCategory });
@@ -35,7 +29,16 @@ export const Schemes = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (!filteredActive) {
+      const timer = setTimeout(() => {
+        fetchSchemes();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [fetchSchemes, filteredActive]);
 
   const handleWizardSubmit = async (e) => {
     e.preventDefault();

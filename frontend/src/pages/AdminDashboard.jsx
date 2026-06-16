@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Modal from '../components/common/Modal';
 import Spinner from '../components/common/Spinner';
@@ -36,11 +36,7 @@ export const AdminDashboard = () => {
     category: 'other', districtCode: ''
   });
 
-  useEffect(() => {
-    fetchTabData();
-  }, [activeTab]);
-
-  const fetchTabData = async () => {
+  const fetchTabData = useCallback(async () => {
     setLoading(true);
     try {
       if (activeTab === 'emergencies') {
@@ -61,7 +57,14 @@ export const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [activeTab]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchTabData();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchTabData]);
 
   const handleDelete = async (type, id) => {
     if (!window.confirm('Are you sure you want to delete this resource?')) return;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import useAuth from '../hooks/useAuth';
@@ -37,7 +37,7 @@ export const Login = () => {
 
     try {
       await login({ email, password });
-    } catch (err) {
+    } catch {
       // Handled by hook error slice
     }
   };
